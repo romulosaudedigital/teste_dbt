@@ -1,13 +1,28 @@
-
 version: 2
 
 models:
-    - name: test_dbt_model
-      description: "A test dbt model keywords"
-     
+  - name: test_dim_comunidades
+    description: "Comunidades"
+    database: sdconecta_dw
+    schema: public
+    columns:
+      - name: name
+        description: Nome da comunidade
+        tests:
+          - unique
+      - name: id
+        description: ID da comunidade
+        tests:
+          - unique
+      - name: created_at
+        description: Data de criação da comunidade
+      - name: deleted_at
+        description: Data de exclusão da comunidade
+      - name: indica_ativa
+        description: Indicador de ativação da comunidade
 
 sources: 
-    - name: prescricao
+    - name: sdconecta
       database: production
       tables:
-          - name: df_sanofi_doencas_keywords
+          - name: client
